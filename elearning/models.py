@@ -1,5 +1,8 @@
 from django.db import models
 
+"""
+    Model Anggota
+"""
 class Anggota(models.Model):
     username = models.CharField(max_length=255,blank=False, null=False, unique= True)
     password  = models.CharField(max_length=255,blank=False, null=False)
@@ -11,6 +14,9 @@ class Anggota(models.Model):
     def daftar(self):
         return self.save()
 
+"""
+    Model Kursus
+"""
 class Kursus(models.Model):
     nama = models.CharField(max_length=255)
     tanggal_mulai = models.DateField('tanggal mulai')
@@ -22,7 +28,9 @@ class Kursus(models.Model):
     def __str__(self):
         return self.nama
 
-
+"""
+    Model Materi
+"""
 class Materi(models.Model):
     nama = models.CharField(max_length=255)
     id_kursus = models.ForeignKey(Kursus)
@@ -30,6 +38,9 @@ class Materi(models.Model):
     def __str__(self):
         return self.nama
 
+"""
+    Model MateriIsi
+"""
 class MateriIsi(models.Model):
     judul = models.CharField(max_length=255)
     id_materi = models.ForeignKey(Materi)
