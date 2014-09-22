@@ -15,6 +15,14 @@ class Anggota(models.Model):
         return self.save()
 
 """
+    Model KursusRelAnggota
+"""
+class KursusRelAnggota(models.Model):
+    anggota = models.ForeignKey(Anggota)
+    kursus = models.ForeignKey(Kursus)
+    posisi = models.CharField(max_length=255,blank=False, null=False)
+
+"""
     Model Kursus
 """
 class Kursus(models.Model):
@@ -47,3 +55,4 @@ class MateriIsi(models.Model):
 
     def __str__(self):
         return self.judul
+
