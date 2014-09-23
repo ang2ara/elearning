@@ -22,6 +22,9 @@ class KursusRelAnggota(models.Model):
     kursus = models.ForeignKey(Kursus)
     posisi = models.CharField(max_length=255,blank=False, null=False)
 
+    def __str_(self):
+        return self.anggota.nama + " " + self.kursus.nama
+
 """
     Model Kursus
 """
@@ -35,6 +38,18 @@ class Kursus(models.Model):
 
     def __str__(self):
         return self.nama
+
+"""
+    Model Anggota Akses Kursus
+"""
+class AnggotaAksesKursus(models.Model):
+    anggota = models.ForeignKey(Anggota)
+    kursus = models.ForeignKey(Kursus)
+    tanggal_mulai = models.DateField("tanggal mulai")
+    tanggal_selesai = models.DateField("tanggal selesai")
+
+    def __str__(self):
+        return anggota.nama + " " + kursus.nama
 
 """
     Model Materi
@@ -56,3 +71,26 @@ class MateriIsi(models.Model):
     def __str__(self):
         return self.judul
 
+"""
+    Model kuis
+"""
+class Kuis(models.Model):
+    nama = models.CharField(max_length=255)
+    tanggal_mulai = models.DateField("tanggal mulai")
+    tanggal_selesai = models.DateField("tanggal selesai")
+    kursus = models.ForeignKey(Kursus)
+
+"""
+    Model KuisPertanyaan
+"""
+class KuisPertanyaan(models.Model):
+    pertanyaan = models.CharField(max_length=255)
+    jenis = models.Model(max_length = 255)
+    kuis = models.ForeignKey()
+
+"""
+    Model KuisJawaban
+"""
+class KuisJawaban(models.Model):
+    jawaban  = models.CharField(max_length=255)
+    pertanyaan = models.ForeignKey(KuisPertanyaan)
