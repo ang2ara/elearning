@@ -15,17 +15,6 @@ class Anggota(models.Model):
         return self.save()
 
 """
-    Model KursusRelAnggota
-"""
-class KursusRelAnggota(models.Model):
-    anggota = models.ForeignKey(Anggota)
-    kursus = models.ForeignKey(Kursus)
-    posisi = models.CharField(max_length=255,blank=False, null=False)
-
-    def __str_(self):
-        return self.anggota.nama + " " + self.kursus.nama
-
-"""
     Model Kursus
 """
 class Kursus(models.Model):
@@ -38,6 +27,19 @@ class Kursus(models.Model):
 
     def __str__(self):
         return self.nama
+
+"""
+    Model KursusRelAnggota
+"""
+class KursusRelAnggota(models.Model):
+    anggota = models.ForeignKey(Anggota)
+    kursus = models.ForeignKey(Kursus)
+    posisi = models.CharField(max_length=255,blank=False, null=False)
+
+    def __str_(self):
+        return self.anggota.nama + " " + self.kursus.nama
+
+
 
 """
     Model Anggota Akses Kursus
@@ -87,8 +89,8 @@ class Kuis(models.Model):
 """
 class KuisPertanyaan(models.Model):
     pertanyaan = models.CharField(max_length=255)
-    jenis = models.Model(max_length = 255)
-    kuis = models.ForeignKey()
+    jenis = models.CharField(max_length = 255)
+    kuis = models.ForeignKey(Kuis)
 
     def __str__(self):
         return self.pertanyaan
