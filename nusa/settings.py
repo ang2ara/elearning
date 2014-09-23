@@ -41,7 +41,7 @@ INSTALLED_APPS = (
 
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
+    #'allauth.socialaccount',
     # ... include the providers you want to enable:
     #'allauth.socialaccount.providers.amazon',
     #'allauth.socialaccount.providers.angellist',
@@ -49,11 +49,11 @@ INSTALLED_APPS = (
     #'allauth.socialaccount.providers.bitly',
     #'allauth.socialaccount.providers.coinbase',
     #'allauth.socialaccount.providers.dropbox',
-    'allauth.socialaccount.providers.facebook',
+    #'allauth.socialaccount.providers.facebook',
     #'allauth.socialaccount.providers.flickr',
     #'allauth.socialaccount.providers.feedly',
     #'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.google',
+    #'allauth.socialaccount.providers.google',
     #'allauth.socialaccount.providers.hubic',
     #'allauth.socialaccount.providers.instagram',
     #'allauth.socialaccount.providers.linkedin',
@@ -92,7 +92,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     # allauth specific context processors
     "allauth.account.context_processors.account",
     "allauth.socialaccount.context_processors.socialaccount",
-
+    'django.contrib.auth.context_processors.auth',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -138,3 +138,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#setting auth
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "optional"
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "[q4ts]"
+ACCOUNT_PASSWORD_MIN_LENGTH = 6
