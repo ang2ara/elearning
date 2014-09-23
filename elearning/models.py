@@ -80,6 +80,8 @@ class Kuis(models.Model):
     tanggal_selesai = models.DateField("tanggal selesai")
     kursus = models.ForeignKey(Kursus)
 
+    def __str__(self):
+        return self.nama
 """
     Model KuisPertanyaan
 """
@@ -88,9 +90,16 @@ class KuisPertanyaan(models.Model):
     jenis = models.Model(max_length = 255)
     kuis = models.ForeignKey()
 
+    def __str__(self):
+        return self.pertanyaan
+
+
 """
     Model KuisJawaban
 """
 class KuisJawaban(models.Model):
     jawaban  = models.CharField(max_length=255)
     pertanyaan = models.ForeignKey(KuisPertanyaan)
+
+    def __str__(self):
+        return self.jawaban
