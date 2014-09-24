@@ -7,6 +7,8 @@
     <title>{% block title %}Ilearn{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-social.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 </head>
 
@@ -30,7 +32,6 @@
               {% else %}
                 <li><a href="{% url 'account_login' %}">Sign In</a></li>
                 <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-                <li><a href="{% provider_login_url 'facebook' method='oauth2' %}"> Sign Up / Login with Facebook</a></li>
               {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
