@@ -85,6 +85,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     # Required by allauth template tags
     "django.core.context_processors.request",
