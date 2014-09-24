@@ -1,6 +1,20 @@
 {% extends "elearning/base.html" %}
+
 {% block title %}Ilern - Home{% endblock %}
 
 {% block content %}
-    <h2>Selamat datang</h2>
+    <div class="container theme-showcase" role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        {% if user.is_authenticated %}
+            <h2>Selamat datang {{user.id}}</h2>
+        {% else %}
+          <h2>Silahkan  <a href="{% url 'account_login' %}">Login</a></h2>
+        {% endif %}
+    </div>
+
+    </div>
+
+
 {% endblock %}
