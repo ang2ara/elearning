@@ -1,8 +1,11 @@
 from django.contrib import admin
-from elearning.models import Anggota, Kursus, Materi, MateriIsi, Kuis, KuisPertanyaan, KuisJawaban
+from elearning.models import  KategoriKursus, Kursus, Materi, MateriIsi, Kuis, KuisPertanyaan, KuisJawaban
 
 """ Memasukkan Model Anggota kedalam halaman admin """
-admin.site.register(Anggota)
+#admin.site.register(Anggota)
+
+""" Memasukkan Model KategoriKursus kedalam halaman admin """
+admin.site.register(KategoriKursus)
 
 """ Memasukkan Model Kursus kedalam halaman admin """
 admin.site.register(Kursus)

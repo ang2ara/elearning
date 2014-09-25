@@ -1,9 +1,24 @@
 from django.db import models
+#from django.contrib.auth.models import User
+
+"""
+    base model untuk menyimpan user add, user modify, add date dan modify date
+"""
+"""
+class Emodel(models.Model):
+    added = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    useradd = models.ForeignKey(User)
+    useredit = models.CharField(max_length=255)
+"""
+
 
 """
     Model Anggota
 """
+"""
 class Anggota(models.Model):
+    user  = models.OneToOneField(User, primary_key=True)
     username = models.CharField(max_length=255,blank=False, null=False, unique= True)
     password  = models.CharField(max_length=255,blank=False, null=False)
     nama = models.CharField(max_length=255,blank=False, null=False)
@@ -13,6 +28,28 @@ class Anggota(models.Model):
         return self.username
     def daftar(self):
         return self.save()
+"""
+
+"""
+    Model KursusKategori
+"""
+"""
+class KursusKategori(models.Model):
+    KURSUS_KATEGORI_ID =0
+    nama  = models.CharField(max_length=255)
+    #children = models.ManyToManyField("self", blank=True)
+    #parent = models.ForeignKey('self', blank=True, null=True)
+    #parent = models.ForeignKey('self', blank=True, null= True, default=0)
+    #parent = models.ManyToManyField("self", blank=True, null= True, related_name="children")
+    def __str__(self):
+        return self.nama
+"""
+
+class KategoriKursus(models.Model):
+    nama = models.CharField(max_length=255)
+    parent = models.ForeignKey('self', blank=True, null= True, default=0)
+    def __str__(self):
+        return self.nama
 
 """
     Model Kursus
@@ -22,8 +59,9 @@ class Kursus(models.Model):
     tanggal_mulai = models.DateField('tanggal mulai')
     tanggal_selesai = models.DateField('tanggal selesai')
     keterangan = models.CharField(max_length=255)
-    tutor = models.ForeignKey(Anggota)
+    #tutor = models.ForeignKey(User)
     status = models.IntegerField(default=0)
+    kategori = models.ForeignKey(KategoriKursus)
 
     def __str__(self):
         return self.nama
@@ -32,7 +70,7 @@ class Kursus(models.Model):
     Model KursusRelAnggota
 """
 class KursusRelAnggota(models.Model):
-    anggota = models.ForeignKey(Anggota)
+    #anggota = models.ForeignKey(User)
     kursus = models.ForeignKey(Kursus)
     posisi = models.CharField(max_length=255,blank=False, null=False)
 
@@ -45,7 +83,7 @@ class KursusRelAnggota(models.Model):
     Model Anggota Akses Kursus
 """
 class AnggotaAksesKursus(models.Model):
-    anggota = models.ForeignKey(Anggota)
+    #anggota = models.ForeignKey(User)
     kursus = models.ForeignKey(Kursus)
     tanggal_mulai = models.DateField("tanggal mulai")
     tanggal_selesai = models.DateField("tanggal selesai")
@@ -58,6 +96,7 @@ class AnggotaAksesKursus(models.Model):
 """
 class Materi(models.Model):
     nama = models.CharField(max_length=255)
+
     id_kursus = models.ForeignKey(Kursus)
 
     def __str__(self):

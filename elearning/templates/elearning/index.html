@@ -4,19 +4,30 @@
 {% block title %}Ilern - Home{% endblock %}
 
 {% block content %}
-    <div class="container theme-showcase" role="main">
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        {% if user.is_authenticated %}
-            <h2>Selamat datang {{user.id}}</h2>
-        {% else %}
-          <h2>Silahkan  <a href="{% url 'account_login' %}">Login</a></h2>
-          <a class="btn btn-block btn-social btn-facebook" href="{% provider_login_url 'facebook' method='oauth2' %}"> <i class="fa fa-facebook"></i>  Sign Up / Login with Facebook</a>
-        {% endif %}
+    <div class="index-header">
+        <div class="container">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h1 style="font-size:48px;">ILERN</h1>
+                <div class="clearfix hidden-xs" style="height:10px;"></div>
+                <p>
+                    {% if user.is_authenticated %}
+                        <h2>Selamat datang {{user.id}}</h2>
+                    {% else %}
+                      <h2>Silahkan  <a href="{% url 'account_login' %}">Login</a></h2>
+                      <a class="btn btn-block btn-social btn-facebook" href="{% provider_login_url 'facebook' method='oauth2' %}"> <i class="fa fa-facebook"></i>  Sign Up / Login with Facebook</a>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
     </div>
 
-    </div>
-
+    {% if latest_kursus_list %}
+        {% for kursus in latest_kursus_list %}
+            <h4><a href="{% url 'elearning:kursus' kursus.id %}">{{ kursus.nama }}</a></h4>
+            {{kursus.keterangan}}
+        {% endfor %}
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
 
 {% endblock %}
