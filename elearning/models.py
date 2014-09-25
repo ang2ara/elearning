@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf.urls.static import static
+from django.conf import settings
 
 """
     base model untuk menyimpan user add, user modify, add date dan modify date
@@ -63,6 +65,7 @@ class Kursus(models.Model):
     user = models.ForeignKey(User)
     status = models.IntegerField(default=0)
     kategori = models.ForeignKey(KategoriKursus)
+    image = models.ImageField("thumb Pic", upload_to="images/cover/", blank=True, null=True)
 
     def __str__(self):
         return self.nama

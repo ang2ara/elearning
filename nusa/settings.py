@@ -139,6 +139,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = '/elearning/media/'
+MEDIA_URL = '/media/'
 
 #setting auth
 ACCOUNT_AUTHENTICATION_METHOD = "username"

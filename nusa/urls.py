@@ -6,6 +6,10 @@ from django.contrib import admin
 from django.views.generic.base import TemplateView
 from elearning import views
 
+#from django.conf.urls.defaults import patterns, include, url
+from django.conf import settings
+from django.conf.urls.static import static
+
 admin.autodiscover()
 
 urlpatterns = [
@@ -23,4 +27,4 @@ urlpatterns = [
 
     # url profile
     url(r'^accounts/profile/$', TemplateView.as_view(template_name='elearning/profile.html')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
