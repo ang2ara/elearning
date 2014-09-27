@@ -94,6 +94,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "allauth.account.context_processors.account",
     "allauth.socialaccount.context_processors.socialaccount",
     'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.media',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -139,7 +140,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_ROOT = '/elearning/media/'
+MEDIA_ROOT = 'D:/django/elearning/elearning/media/'
 MEDIA_URL = '/media/'
 
 #setting auth

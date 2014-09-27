@@ -11,7 +11,8 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_kursus_list'
 
     def get_queryset(self):
-        return Kursus.objects.order_by('-tanggal_mulai')[:10]
+        #return Kursus.objects.order_by('-nama')[:10]
+        return Kursus.objects.order_by('nama')[:10]
 
 class KursusView(generic.DetailView):
     model = Kursus
