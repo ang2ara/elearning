@@ -14,39 +14,9 @@ class Emodel(models.Model):
     useredit = models.CharField(max_length=255)
 """
 
-
 """
-    Model Anggota
+    Model KategoriKursus
 """
-"""
-class Anggota(models.Model):
-    user  = models.OneToOneField(User, primary_key=True)
-    username = models.CharField(max_length=255,blank=False, null=False, unique= True)
-    password  = models.CharField(max_length=255,blank=False, null=False)
-    nama = models.CharField(max_length=255,blank=False, null=False)
-    email = models.CharField(max_length=255,blank=False, null=False)
-
-    def __str__(self):
-        return self.username
-    def daftar(self):
-        return self.save()
-"""
-
-"""
-    Model KursusKategori
-"""
-"""
-class KursusKategori(models.Model):
-    KURSUS_KATEGORI_ID =0
-    nama  = models.CharField(max_length=255)
-    #children = models.ManyToManyField("self", blank=True)
-    #parent = models.ForeignKey('self', blank=True, null=True)
-    #parent = models.ForeignKey('self', blank=True, null= True, default=0)
-    #parent = models.ManyToManyField("self", blank=True, null= True, related_name="children")
-    def __str__(self):
-        return self.nama
-"""
-
 class KategoriKursus(models.Model):
     nama = models.CharField(max_length=255)
     parent = models.ForeignKey('self', blank=True, null= True, default=0)

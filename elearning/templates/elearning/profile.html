@@ -1,7 +1,8 @@
 {% extends "elearning/base.html" %}
+{% load socialaccount %}
 
 {% block content %}
-<h1>Profile</h1>
+<h1>Profile {{user.username}}</h1>
 
 <p>Your profile</p>
 {% endblock %}
