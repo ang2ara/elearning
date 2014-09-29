@@ -1,0 +1,38 @@
+{% extends "elearning/base.html" %}
+{% load staticfiles %}
+{% block title %}Ilern - Buat kursus{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/datepicker.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <form role="form" action="." method="POST">
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        <p class="help-block">{{ field.errors }}</p>
+                    </div>
+                {% endfor %}
+                {{ field.non_field_errors }}
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+    <script>
+        $('#id_tanggal_mulai').datepicker().on('changeDate', function(ev){
+			$('#id_tanggal_mulai').datepicker('hide');
+		});
+        $('#id_tanggal_selesai').datepicker().on('changeDate', function(ev){
+			$('#id_tanggal_selesai').datepicker('hide');
+		});
+
+    </script>
+{% endblock %}

@@ -31,7 +31,6 @@ class Kursus(models.Model):
     tanggal_mulai = models.DateField('tanggal mulai')
     tanggal_selesai = models.DateField('tanggal selesai')
     keterangan = models.CharField(max_length=255)
-    #tutor = models.ForeignKey(User)
     user = models.ForeignKey(User)
     status = models.IntegerField(default=0)
     kategori = models.ForeignKey(KategoriKursus)
@@ -44,7 +43,6 @@ class Kursus(models.Model):
     Model KursusRelAnggota
 """
 class KursusRelAnggota(models.Model):
-    #anggota = models.ForeignKey(User)
     user = models.ForeignKey(User)
     kursus = models.ForeignKey(Kursus)
     posisi = models.CharField(max_length=255,blank=False, null=False)
@@ -58,7 +56,6 @@ class KursusRelAnggota(models.Model):
     Model Anggota Akses Kursus
 """
 class AnggotaAksesKursus(models.Model):
-    #anggota = models.ForeignKey(User)
     user = models.ForeignKey(User)
     kursus = models.ForeignKey(Kursus)
     tanggal_mulai = models.DateField("tanggal mulai")
