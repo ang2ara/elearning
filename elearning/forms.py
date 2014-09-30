@@ -5,6 +5,16 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class KursusForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs['initial']['user']
+        super(KursusForm, self).__init__(*args, **kwargs)
+
+    def save(self, commit=True):
+        obj = super(KursusForm, self).save(False)
+        obj.user = self.user
+        commit and obj.save()
+        return obj
+
     class Meta:
         model = Kursus
         fields = ['nama','keterangan','tanggal_mulai','tanggal_selesai','image','kategori']
@@ -27,3 +37,4 @@ class KursusForm(forms.ModelForm):
             'image': FileInput(attrs={'class': 'form-control'}),
             'kategori': Select(attrs={'class': 'form-control'}),
         }
+

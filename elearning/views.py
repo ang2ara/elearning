@@ -24,3 +24,10 @@ class KursusTambahView(CreateView):
     model = Kursus
     template_name = 'elearning/kursus/tambahKursus.html'
     form_class = KursusForm
+
+    def get_initial(self):
+        self.initial.update({ 'user': self.request.user })
+        return self.initial
+
+    def get_success_url(self):
+        return reverse('index')
