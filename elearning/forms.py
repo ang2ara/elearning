@@ -3,18 +3,23 @@ from django.forms import ModelForm, TextInput, Textarea, DateInput, Select, File
 from elearning.models import Kursus
 from django.utils.translation import ugettext_lazy as _
 
-
+# form kursus
 class KursusForm(forms.ModelForm):
+
+    # inisialiasi form
     def __init__(self, *args, **kwargs):
+        # membuat atribut user untuk menghubungkan obyek kursus dengan user
         self.user = kwargs['initial']['user']
         super(KursusForm, self).__init__(*args, **kwargs)
 
+    # menyimpan obyek yang ada di dalam form kedalam database
     def save(self, commit=True):
         obj = super(KursusForm, self).save(False)
         obj.user = self.user
         commit and obj.save()
         return obj
 
+    # konfigurasi field yang ada di form
     class Meta:
         model = Kursus
         fields = ['nama','keterangan','tanggal_mulai','tanggal_selesai','image','kategori']
@@ -27,6 +32,9 @@ class KursusForm(forms.ModelForm):
         error_messages = {
             'nama': {
                 'max_length': _("Nama kursus terlalu panjang, maksimal 255 karakter."),
+            },
+            'keterangan': {
+                'max_length': _("keterangan kursus terlalu panjang, maksimal 255 karakter."),
             },
         }
         widgets = {
